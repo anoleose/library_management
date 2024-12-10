@@ -18,13 +18,13 @@ def get_author_by_id(db: Session, author_id: int):
 
 
 def update_author(db:Session, author_id: int):
-	get_author = get_author_by_id(db=db, author_id=author_id)
-	get_author.title = author.first_name
-	get_author.surname = author.surname
-   	get_author.date_of_birth = author.date_of_birth
-	db.commit()
-	db.refresh(get_author)
-	return get_author
+    get_author = get_author_by_id(db=db, author_id=author_id)
+    get_author.title = author.first_name
+    get_author.surname = author.surname
+    get_author.date_of_birth = author.date_of_birth
+    db.commit()
+    db.refresh(get_author)
+    return get_author
 	
 
 def delete_author(db: Session, author_id: int):
