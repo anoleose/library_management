@@ -70,5 +70,40 @@ def delete_book(db: Session, book_id: int):
 
 
 
+# CRUD for borrow
+def create_borrow(db: Session, borrow: BorrowCreate):
+    db_borrow = Borrow(**borrow.dict())
+    db.add(db_borrow)
+    db.commit()
+    db.refresh(db_borrow)
+    return db_borrow
+
+def get_borrow(db: Session):
+    return db.query(Borrow).all()
+
+def get_borrow_by_id(db: Session, borrow_id: int):
+    return db.query(Borrow).filter(Borrow.id == borrow_id).first()
+
+
+def update_borrow(db:Session, borrow_id: int):
+    borrow = get_book_by_id(db=db, borrow_id=book_id)
+    if borrow:
+    	borrow.book_id = BorrowUpdate.book_id
+    	borrow.reader_name = BorrowUpdate.reader_name
+    	borrow.date_of_issue = BorrowUpdate.date_of_issue
+	borrow.return_date = BorrowUpdate.return_date 
+    	db.commit()
+    	db.refresh(borrow)
+    	return borrow
+	
+
+def delete_borrow(db: Session, borrow_id: int):
+    borrow = get_author_by_id(db, borrow_id)
+    if borrow:
+        db.delete(borrow)
+        db.commit()
+
+
+
 
 
