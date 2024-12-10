@@ -60,9 +60,6 @@ class BookUpdate(BaseModel):
     copies_available: Optional[int] = None
 
 class BorrowUpdate(BaseModel):
-    book_id: Optional[int] = None  # ForeignKey to Author
-    reader_name: Optional[str] = None
-    date_of_issue: Optional[datetime] = None
     return_date: Optional[datetime] = None  # Datetime field to update
 
 
