@@ -88,9 +88,6 @@ def get_borrow_by_id(db: Session, borrow_id: int):
 def update_borrow(db:Session, borrow_id: int):
     borrow = get_book_by_id(db=db, borrow_id=book_id)
     if borrow:
-    	borrow.book_id = BorrowUpdate.book_id
-    	borrow.reader_name = BorrowUpdate.reader_name
-    	borrow.date_of_issue = BorrowUpdate.date_of_issue
 	borrow.return_date = BorrowUpdate.return_date 
     	db.commit()
     	db.refresh(borrow)
