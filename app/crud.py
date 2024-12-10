@@ -34,5 +34,40 @@ def delete_author(db: Session, author_id: int):
         db.delete(author)
         db.commit()
 
-# Similarly, add CRUD for books and borrows...
+
+# CRUD for books
+def create_author(db: Session, author: AuthorCreate):
+    db_author = Author(**author.dict())
+    db.add(db_author)
+    db.commit()
+    db.refresh(db_author)
+    return db_author
+
+def get_authors(db: Session):
+    return db.query(Author).all()
+
+def get_author_by_id(db: Session, author_id: int):
+    return db.query(Author).filter(Author.id == author_id).first()
+
+
+def update_author(db:Session, author_id: int):
+    author = get_author_by_id(db=db, author_id=author_id)
+    if author
+    	author.title = AuthorCreate.first_name
+    	author.surname = AuthorCreate.surname
+    	author.date_of_birth = AuthorCreate.date_of_birth
+    	db.commit()
+    	db.refresh(author)
+    	return author
+	
+
+def delete_author(db: Session, author_id: int):
+    author = get_author_by_id(db, author_id)
+    if author:
+        db.delete(author)
+        db.commit()
+
+
+
+
 
